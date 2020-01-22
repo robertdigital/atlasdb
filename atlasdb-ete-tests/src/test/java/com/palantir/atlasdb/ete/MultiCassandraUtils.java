@@ -31,11 +31,9 @@ public final class MultiCassandraUtils {
         // utility
     }
 
-    /* Kill all of the Cassandra containers and start them again.  This wipes all data on the nodes. */
+    /** Kill all of the Cassandra containers and start them again.  This wipes all data on the nodes. */
     public static void resetCassandraCluster(Set<String> containerNames) {
-        for (String containerName : containerNames) {
-            killCassandraContainer(containerName);
-        }
+        containerNames.forEach(MultiCassandraUtils::killCassandraContainer);
         containerNames.forEach(MultiCassandraUtils::startCassandraContainer);
     }
 
